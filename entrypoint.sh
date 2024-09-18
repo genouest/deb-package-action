@@ -25,6 +25,7 @@ echo "build package"
 rm *.deb *.buildinfo *.changes
 
 ls -lha
+sh -c "git config --global --add safe.directory $PWD"
 git status
 
 
