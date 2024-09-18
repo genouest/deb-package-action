@@ -2,6 +2,8 @@
 
 set -e
 
+sh -c "git config --global --add safe.directory $PWD"
+
 echo "deb http://deb.debian.org/debian/ stable main contrib" > /etc/apt/sources.list && rm /etc/apt/sources.list.d/debian.sources
 apt-get update && apt-get -y install devscripts git-buildpackage
 sourceversion=`dpkg-parsechangelog --show-field Version | cut -d'-' -f1`
@@ -25,9 +27,7 @@ echo "build package"
 rm *.deb *.buildinfo *.changes
 
 ls -lha
-sh -c "git config --global --add safe.directory $PWD"
-git status
-
+ls -lha ./build-area
 
 echo y | gbp buildpackage --git-ignore-branch --no-sign --git-export-dir=../build-area --git-no-create-orig
 cp ../build-area/*.deb ./
