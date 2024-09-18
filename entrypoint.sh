@@ -24,6 +24,10 @@ rm -rf /tmp/${package}_${sourceversion}.orig
 echo "build package"
 rm *.deb *.buildinfo *.changes
 
+ls -lha
+git status
+
+
 echo y | gbp buildpackage --git-ignore-branch --no-sign --git-export-dir=../build-area --git-no-create-orig
 cp ../build-area/*.deb ./
 ls -l *.deb
