@@ -2,6 +2,7 @@
 
 set -e
 
+echo "deb http://deb.debian.org/debian/ stable main contrib" > /etc/apt/sources.list && rm /etc/apt/sources.list.d/debian.sources
 apt-get update && apt-get -y install devscripts git-buildpackage
 sourceversion=`dpkg-parsechangelog --show-field Version | cut -d'-' -f1`
 version=`dpkg-parsechangelog --show-field Version`
