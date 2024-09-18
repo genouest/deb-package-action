@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:bookworm
 
 COPY entrypoint.sh /entrypoint.sh
 
